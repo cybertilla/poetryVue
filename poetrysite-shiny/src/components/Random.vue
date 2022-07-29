@@ -12,14 +12,12 @@ export default {
     this.fetchData()
   },
   methods: {
-    //an asynchronous function to get data from the api and assign it to *
+    //an asynchronous function to get data from the api and assign 'em to the right places
     async fetchData() {
       const response = await axios.get('https://poetrydb.org/random');
-      this.title = (response.data[0].title);
-      this.lines = (response.data[0].lines);
+      this.title = response.data[0].title;
+      this.lines = response.data[0].lines;
       this.author = response.data[0].author;
-      
-
     }
   }
 };
@@ -28,11 +26,11 @@ export default {
 
 
 <template>
-  <h3>{{ header }}</h3>
-
-  <template v-for="author in authors">
+  <h1>{{ title }}</h1>
+  <h5>{{ author }}</h5>
+  <template v-for="line in lines">
     <ul>
-      <label>{{ author }}</label>
+      <label>{{ line }}</label>
     </ul>
   </template>
 </template>
