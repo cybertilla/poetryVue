@@ -1,40 +1,35 @@
-
-<script>const API_URL = `https://poetrydb.org/`
+<script>
 import axios from 'axios';
 
 export default {
   data: () => ({
-    items: [
-       { name: 'Foo' },
-       { name: 'Bar' }
-     ],
+    authors: ['Loading...'],
     header: "All authors"
-  })
-};
+  }),
+  created() {
+    // fetch on init
+    this.fetchData()
+  },
+  methods: {
+    //an asynchronous function to get data from the api and assign it to data.authors
+    async fetchData() {
+      const response = await axios.get('https://poetrydb.org/authors');
+      const data = response.data.authors;
+      this.authors = data;
 
-//call the api and get author's list
-function getAuthors() {
-  //do this better with constant URLAPI
-  return axios.get('https://poetrydb.org/author');
-}
-
-function readAuthors() {
-    const authors = getAuthors.results[0].data.authors;
-
-    for (const author of authors) {
-      var obj = {};
-      obj['name']= author;
-      data.items.push(obj);
     }
-      console.log(data.items);
   }
-
-readAuthors;
-
+};
 </script>
 
-  <template v-for="item in items">
+
+
+<template>
+  <h3>{{ header }}</h3>
+
+  <template v-for="author in authors">
     <ul>
-    <label :for="item">{{ item.name }}</label>
+      <label>{{ author }}</label>
     </ul>
   </template>
+</template>

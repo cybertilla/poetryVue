@@ -10,7 +10,7 @@ import NavBar from './components/NavBar.vue';
 
   <main>
       <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <HelloWorld/>
     </div>
   </main>
 </template>
