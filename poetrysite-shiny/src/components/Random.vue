@@ -12,7 +12,7 @@ export default {
     this.fetchData()
   },
   methods: {
-    //an asynchronous function to get data from the api and assign 'em to the right places
+    //an asynchronous function to get data from the api and assign 'em to the right data fileds
     async fetchData() {
       const response = await axios.get('https://poetrydb.org/random');
       this.title = response.data[0].title;

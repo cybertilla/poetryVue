@@ -11,8 +11,8 @@
 
 <template>
   <MDBNavbar light bg="light" container>
-    <MDBNavbarBrand href="/">Poetry Search</MDBNavbarBrand>
-    <MDBBtn>Authors</MDBBtn>
-    <MDBBtn>Random</MDBBtn>
+    <MDBNavbarBrand href="/">Poetry Fetch</MDBNavbarBrand>
+    <MDBBtn href="/authors">Authors</MDBBtn>
+    <MDBBtn href="/random">Random</MDBBtn>
   </MDBNavbar>
 </template>
