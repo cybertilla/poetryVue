@@ -6,7 +6,7 @@ export default {
     lines: ['Loading...'],
     author: "Author",
     title: "Title"
-  }),
+      }),
   created() {
     // fetch on init
     this.fetchData()

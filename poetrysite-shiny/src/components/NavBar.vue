@@ -5,7 +5,7 @@
       MDBBtn,
       MDBNavbar,
       MDBNavbarBrand,
-    },
+    }
   };
 </script>
 
