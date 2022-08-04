@@ -1,12 +1,8 @@
 <script setup>
 //This is the main app vue file
 //import components
-import Authors from './components/Authors.vue'
 import NavBar from './components/NavBar.vue';
-import Random from './components/Random.vue';
-
-//try conditionals here?
-
+import Display from './components/Display.vue';
 
 
 </script>
@@ -17,6 +13,8 @@ import Random from './components/Random.vue';
   </header>
 
   <main>
+
+    <Display></Display>
     <!--
     <div class="wrapper">
       <Authors />
@@ -31,11 +29,12 @@ export default {
  <button @click="show = !show">Toggle List</button>
         <div v-if="show">
 
--->
+
 
     <div class="wrapper">
       <Random></Random>
     </div>
+    -->
   </main>
 </template>
 
