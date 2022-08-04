@@ -1,6 +1,9 @@
 <script>
 import Random from './Random.vue'
 import Authors from './Authors.vue';
+ import { MDBRadio, MDBBtnGroup } from 'mdb-vue-ui-kit';
+   import { ref } from "vue";
+
 
 export default {
     data() {
@@ -8,23 +11,19 @@ export default {
             display: "Random"
         };
     },
-    components: { Random, Authors }
-}
-
+    components: { Random, Authors,
+      MDBRadio, MDBBtnGroup
+    }};
 </script>
 
 
 <template>
+    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-secondary" label="Random" name="options" value="Random"
+      v-model="display" />
+    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-secondary" label="Authors" name="options" value="Authors"
+      v-model="display" />
 
-  <h2>Display</h2>
-  <input type="radio" id="Random" value="Random" v-model="display">
-  <label for="Random">Random</label>
-  <br>
-  <input type="radio" id="Authors" value="Authors" v-model="display">
-  <label for="Authors">Authors</label>
-  <br>
-  <span>Picked: {{ display }}</span>
-    <div v-if="(display == 'Random')">
+    <div v-if="display == 'Random'">
     <Random></Random>
     </div>
       <div v-else-if="display != 'Random'">
