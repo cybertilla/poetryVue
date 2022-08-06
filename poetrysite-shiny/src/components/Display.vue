@@ -2,8 +2,6 @@
 import Random from './Random.vue'
 import Authors from './Authors.vue';
  import { MDBRadio, MDBBtnGroup } from 'mdb-vue-ui-kit';
-   import { ref } from "vue";
-
 
 export default {
     data() {
