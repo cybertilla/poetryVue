@@ -1,14 +1,31 @@
 <script>
 import axios from 'axios';
 import Modal from './Modal.vue'
-
+  import { MDBModal, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
+  import { ref } from 'vue';
 
 export default {
+    components: {
+      MDBModal,
+      MDBModalHeader,
+      MDBModalTitle,
+      MDBModalBody,
+      MDBModalFooter,
+      MDBBtn
+    },
+    setup() {
+      const varyingExampleModal = ref(false);
+      const modalContent = ref('');
+      return {
+        varyingExampleModal,
+        modalContent,
+      }
+    }
+  ,
   data: () => ({
     authors: ['Loading...'],
-    header: "List of authors",
-    showModal: false
-      }),
+    header: "List of authors"
+          }),
   created() {
     // fetch on init
     this.fetchData()
@@ -19,9 +36,6 @@ export default {
       const response = await axios.get('https://poetrydb.org/author');
       this.authors = response.data.authors;
     }
-  },
-  components: {
-    Modal
   }
 };
 </script>
@@ -40,20 +54,51 @@ export default {
   </template>
 -->
 
-  <a id="show-modal" @click="showModal = true">
-    <template v-for="author in authors">
-    <ul>
-      <label>{{ author }}</label>
-    </ul>
-  </template>
-  </a>
+  <MDBBtn
+    color="primary"
+    aria-controls="varyingExampleModal"
+    @click="
+      () => {
+        modalContent = 'author1';
+        varyingExampleModal = true;
+      }
+    "
+  >
+    author11
+  </MDBBtn>
 
-  <Teleport to="body">
-    <!-- use the modal component, pass in the prop -->
-    <modal :show="showModal" @close="showModal = false">
-      <template #header>
-        <h3>custom header</h3>
-      </template>
-    </modal>
-  </Teleport>
+  
+  <MDBModal
+    id="varyingExampleModal"
+    tabindex="-1"
+    labelledby="varyingExampleModalLabel"
+    v-model="varyingExampleModal"
+  >
+ 
+    <MDBModalBody>
+
+      
+      <form>
+        <div class="mb-3">
+          <label for="recipient-name">Recipient: </label>
+          <input
+            type="text"
+            class="form-control"
+            id="recipient-name"
+            :value="modalContent"
+          />
+
+
+        </div>
+
+      </form>
+    </MDBModalBody>
+
+
+    <MDBModalFooter>
+      <MDBBtn color="secondary" @click="varyingExampleModal = false"> Close </MDBBtn>
+    </MDBModalFooter>
+  </MDBModal>
+
+
 </template>
