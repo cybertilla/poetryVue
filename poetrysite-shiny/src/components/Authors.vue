@@ -1,7 +1,7 @@
 <script>
 import axios from 'axios';
 import Modal from './Modal.vue'
-// import { MDBModal, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
+ import { MDBModal, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
 
 export default {
   components: {
@@ -30,6 +30,9 @@ export default {
     openModal(author) {
       this.modalData = author
       this.modalVisible = true
+    },
+    close(){
+      this.modalVisible = false;
     }
 
   }
@@ -41,7 +44,9 @@ export default {
   <h3>{{ header }}</h3>
   
     <div>
-      <Modal v-if="modalVisible" @close="modalVisible = false" :data="modalData" />
+      <Modal v-if="modalVisible"
+      @close="modalVisible = false" 
+      :data="modalData"/>
 
       <template v-for="author in authors">
         <button type="button" @click="openModal(author)"> {{ author }}</button>
@@ -55,5 +60,9 @@ export default {
       <label>{{ author }}</label>
     </ul>
   </template>
+              @click="close()" 
+                    :modalVisible = "modalVisible" 
+
+
 -->
 </template>
