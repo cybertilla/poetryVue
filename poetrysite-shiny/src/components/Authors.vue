@@ -1,20 +1,31 @@
 <script>
 import axios from 'axios';
 import Modal from './Modal.vue'
- import { MDBModal, MDBModalHeader, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
 
 export default {
+  name: 'AuthorsPage',
   components: {
     Modal
   },
-  data: () => ({
+  data() {
+    return {
+    authorsList: ['Loading...'],
+    header: "List of authors",
+    modalVisible: false,
+
+      author: {
+        name: "Poet Poe",
+        listOfPoems: [],
+      }
+    }
+  },
+  /*data: () => ({
     authors: ['Loading...'],
     header: "List of authors",
 
-    modalVisible: true,
-    modalData: "string"
+    modalData: []
+*/
 
-  }),
   created() {
     // fetch on init
     this.fetchData()
@@ -23,37 +34,42 @@ export default {
     //an asynchronous function to get data from the api and assign it to author list
     async fetchData() {
       const response = await axios.get('https://poetrydb.org/author');
-      this.authors = response.data.authors;
+      this.authorsList = response.data.authors;
       console.log(this.header);
+            console.log(this.author)
+
     },
 
-    openModal(author) {
-      this.modalData = author
+    async openModal(author) {
+      this.author.name = author
       this.modalVisible = true
+      console.log(this.author)
     },
-    close(){
+    close() {
       this.modalVisible = false;
-    }
 
+    }
   }
 };
 </script>
 
 
 <template>
-  <h3>{{ header }}</h3>
-  
-    <div>
-      <Modal v-if="modalVisible"
-      @close="modalVisible = false" 
-      :data="modalData"/>
-
-      <template v-for="author in authors">
-        <button type="button" @click="openModal(author)"> {{ author }}</button>
-      </template>
-    </div>
+{{ header}}
+  <div>
+    <Modal v-if="modalVisible"
+      @close="modalVisible = false" :author.name="author.name" :author.listOfPoems="author.listOfPoems"></modal>
+<div>
+    <button v-for="author in authorsList" type="button" @click="openModal(author)"> {{ author }} </button>
+</div>
+  </div>
 
   <!--
+  <h3>{{ header }}</h3>
+      <Modal v-if="modalVisible"
+      @close="modalVisible = false" 
+      @close="callback"
+      :data="modalData"/>
 
   <template v-for="author in authors">
     <ul>

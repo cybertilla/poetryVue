@@ -2,14 +2,25 @@
  import { MDBModal, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
 
 export default {
-    emits: 'close',
+    name: "Modal",     
+    //props: ['authorName', 'listOfPoems'],
+    emits: ['close'],
 
     methods: {
         close() {
             this.$emit('close');
         }
     },
-    props: ['author'],
+
+  data() {
+    return {
+      author: {
+        name: "Poet Poe",
+        listOfPoems: [],
+      }
+      }
+  },
+
     components: {
         MDBModal,
         MDBModalBody,
@@ -21,9 +32,8 @@ export default {
 </script>
 
 <template>
-<MDBModalBody>
-<MDBModalTitle> {{ props }}</MDBModalTitle>
+<div>
+<MDBModalTitle> {{ author.name }} </MDBModalTitle>
     <MDBBtn @click="close">Cancel</MDBBtn>
-    </MDBModalBody>
-    <MDBModalFooter>footer</MDBModalFooter>
+    </div>
 </template>
