@@ -3,9 +3,10 @@
 import axios from 'axios';
 //the child componen Modal will be used to display info about the authors
 import Modal from './Modal.vue'
+import * as math from 'mathjs'
+
 
 export default {
-  //  name: 'AuthorsPage',
   components: {
     Modal
   },
@@ -16,6 +17,8 @@ export default {
       header: "List of authors",
       modalVisible: false,
       selectedAuthor: "",
+      randomPoemTitle: "",
+      randomPoemLines: []
       }
       },
   created() {
@@ -27,12 +30,18 @@ export default {
     async fetchData() {
       const response = await axios.get('https://poetrydb.org/author');
       this.authorsList = response.data.authors;
-      console.log(this.header);
     },
      
     //when an author's name is clicked, the value is assigned to +????? and modal becomes visible
-    openModal(author) {
+    async openModal(author) {
+      const poemslist = await axios.get('https://poetrydb.org/author/'+author)
       this.selectedAuthor = author;
+      const n = math.floor(math.random() * (poemslist.data.length -1));
+      console.log(poemslist.data)
+      this.randomPoemTitle = poemslist.data[n].title
+      this.randomPoemLines = poemslist.data[n].lines
+
+//      this.listOfPoems = poemslist
       this.modalVisible = true;
     },
     
@@ -47,28 +56,9 @@ export default {
   <template>
   {{ header }}
   <div>
-    <Modal v-if="modalVisible" @close=handleClose() :selectedAuthor="selectedAuthor"></modal>
+    <Modal v-if="modalVisible" @close=handleClose() :selectedAuthor="selectedAuthor" :randomPoemTitle="randomPoemTitle" :randomPoemLines="randomPoemLines"></modal>
     <div>
       <button v-for="author in authorsList" type="button" @click=openModal(author)> {{ author }} </button>
     </div>
   </div>
-
-  <!--
-      :author.listOfPoems="author.listOfPoems"
-  <h3>{{ header }}</h3>
-      <Modal v-if="modalVisible"
-      @close="modalVisible = false" 
-      @close="callback"
-      :data="modalData"/>
-
-  <template v-for="author in authors">
-    <ul>
-      <label>{{ author }}</label>
-    </ul>
-  </template>
-              @click="close()" 
-                    :modalVisible = "modalVisible" 
-
-
--->
 </template>
