@@ -3,6 +3,7 @@
 //import components
 import NavBar from './components/NavBar.vue';
 import Display from './components/Display.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
@@ -12,4 +13,5 @@ import Display from './components/Display.vue';
   <main>
     <Display></Display>
   </main>
+  <Footer></Footer>
 </template>
