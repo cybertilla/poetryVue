@@ -15,31 +15,22 @@ import Display from './components/Display.vue';
   <main>
 
     <Display></Display>
-    <!--
-    <div class="wrapper">
-      <Authors />
-    </div>
-
-export default {
-  data() {
-    return {
-      show: true    }
-  }
-}
- <button @click="show = !show">Toggle List</button>
-        <div v-if="show">
-
-
-
-    <div class="wrapper">
-      <Random></Random>
-    </div>
-    -->
+    
   </main>
 </template>
 
 <style scoped>
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+.center {
+  text-align: center;
+}
+.vertically-centered{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 </style>

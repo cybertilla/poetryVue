@@ -1,14 +1,18 @@
 <script>
 //axios handles API requests
 import axios from 'axios';
+import * as math from 'mathjs';
+
 //the child componen Modal will be used to display info about the authors
-import Modal from './Modal.vue'
-import * as math from 'mathjs'
+import Modal from './Modal.vue';
+import { MDBBtn } from "mdb-vue-ui-kit";
+
 
 
 export default {
   components: {
-    Modal
+    Modal,
+    MDBBtn
   },
   //data must be a function
   data() {
@@ -37,11 +41,8 @@ export default {
       const poemslist = await axios.get('https://poetrydb.org/author/'+author)
       this.selectedAuthor = author;
       const n = math.floor(math.random() * (poemslist.data.length -1));
-      console.log(poemslist.data)
       this.randomPoemTitle = poemslist.data[n].title
       this.randomPoemLines = poemslist.data[n].lines
-
-//      this.listOfPoems = poemslist
       this.modalVisible = true;
     },
     
@@ -58,7 +59,7 @@ export default {
   <div>
     <Modal v-if="modalVisible" @close=handleClose() :selectedAuthor="selectedAuthor" :randomPoemTitle="randomPoemTitle" :randomPoemLines="randomPoemLines"></modal>
     <div>
-      <button v-for="author in authorsList" type="button" @click=openModal(author)> {{ author }} </button>
+      <MDBBtn v-for="author in authorsList" type="button" @click=openModal(author) outline="dark" rounded> {{ author }} </MDBBtn>
     </div>
   </div>
 </template>
