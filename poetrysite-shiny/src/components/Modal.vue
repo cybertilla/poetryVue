@@ -21,10 +21,12 @@ export default {
 </script>
 
 <template>
-<div>
-<MDBModalTitle> {{ selectedAuthor }} </MDBModalTitle>
+    <div class="container">
+          <div class="center">
+        <MDBModalTitle> {{ selectedAuthor }} </MDBModalTitle>
 <MDBModalBody >{{ randomPoemTitle }}</MDBModalBody>
 <p v-for="line in randomPoemLines"> {{ line }} </p>
     <MDBBtn outline="danger" @click="close">Close</MDBBtn>
     </div>
+  </div>
 </template>

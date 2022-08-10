@@ -55,10 +55,11 @@ export default {
 
 </script>
   <template>
-  {{ header }}
+
   <div>
-    <Modal v-if="modalVisible" @close=handleClose() :selectedAuthor="selectedAuthor" :randomPoemTitle="randomPoemTitle" :randomPoemLines="randomPoemLines"></modal>
+    <Modal class="note note-light" v-if="modalVisible" @close=handleClose() :selectedAuthor="selectedAuthor" :randomPoemTitle="randomPoemTitle" :randomPoemLines="randomPoemLines"></modal>
     <div>
+<br>
       <MDBBtn v-for="author in authorsList" type="button" @click=openModal(author) outline="dark" rounded> {{ author }} </MDBBtn>
     </div>
   </div>

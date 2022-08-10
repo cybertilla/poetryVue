@@ -16,13 +16,22 @@ export default {
 
 
 <template>
-    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-secondary" label="Random" name="options" value="Random"
+<div class="container">
+  <div  class="d-block">
+<br>
+<p>Choose what to display: </p>
+    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-light" label="Random poem" name="options" value="Random"
       v-model="display" />
-    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-secondary" label="Authors" name="options" value="Authors"
+<hr>
+    <MDBRadio :btnCheck="true" :wrap="false" labelClass="btn btn-light" label="All authors" name="options" value="Authors"
       v-model="display" />
+    </div>
+    </div>
+    <br>
 
     <div v-if="display == 'Random'">
-    <Random></Random>
+    
+    <Random class="note note-light"></Random>
     </div>
       <div v-else-if="display != 'Random'">
       <Authors></Authors>

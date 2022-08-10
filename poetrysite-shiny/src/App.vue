@@ -23,14 +23,18 @@ import Display from './components/Display.vue';
 #app {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
-.center {
-  text-align: center;
+.container {
+  height: 200px;
+  position: relative;
+  border: 3px solid green;
 }
-.vertically-centered{
+
+.center {
   margin: 0;
   position: absolute;
   top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>
