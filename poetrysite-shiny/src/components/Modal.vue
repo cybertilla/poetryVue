@@ -1,15 +1,15 @@
 <script>
- import { MDBModal, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
+import { MDBModal, MDBModalTitle, MDBModalBody, MDBModalFooter, MDBBtn } from "mdb-vue-ui-kit";
 
 export default {
     props: ['selectedAuthor', 'randomPoemTitle', 'randomPoemLines'],
     emits: ['close'],
-
+    //emit the close method
     methods: {
         close() {
             this.$emit('close');
         }
-  },
+    },
     components: {
         MDBModal,
         MDBModalBody,
@@ -22,11 +22,27 @@ export default {
 
 <template>
     <div class="container">
-          <div class="center">
-        <MDBModalTitle> {{ selectedAuthor }} </MDBModalTitle>
-<MDBModalBody >{{ randomPoemTitle }}</MDBModalBody>
-<p v-for="line in randomPoemLines"> {{ line }} </p>
-    <MDBBtn outline="danger" @click="close">Close</MDBBtn>
+        <div class="center">
+            <MDBModalTitle>
+                <h2>{{ randomPoemTitle }} </h2>
+            </MDBModalTitle>
+            <MDBModalBody>
+                <p><i>{{ selectedAuthor }} </i></p>
+            </MDBModalBody>
+            <p id="lines" v-for="line in randomPoemLines"> {{ line }} </p>
+            <MDBModalFooter>
+                <MDBBtn id="close" outline="danger" @click="close">Close</MDBBtn>
+            </MDBModalFooter>
+        </div>
     </div>
-  </div>
 </template>
+
+<style>
+#lines {
+    line-height: 1.6;
+    font-weight: normal;
+}
+#close {
+    float: right;
+}
+</style>

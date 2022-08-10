@@ -1,5 +1,5 @@
 <script>
-  import { MDBBtn, MDBNavbar, MDBNavbarBrand } from 'mdb-vue-ui-kit';
+  import { MDBNavbar, MDBNavbarBrand } from 'mdb-vue-ui-kit';
   export default {
     components: {
       MDBNavbar,
@@ -10,6 +10,6 @@
 
 <template>
   <MDBNavbar light bg="light" container>
-    <MDBNavbarBrand href="/">Poetry Fetch</MDBNavbarBrand>
+    <MDBNavbarBrand href="/">Poetry at Random</MDBNavbarBrand>
   </MDBNavbar>
 </template>

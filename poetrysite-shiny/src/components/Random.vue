@@ -6,7 +6,7 @@ export default {
     lines: ['Loading...'],
     author: "Author",
     title: "Title"
-      }),
+  }),
   created() {
     // fetch on init
     this.fetchData()
@@ -23,19 +23,18 @@ export default {
 };
 </script>
 
-
-
 <template>
-<div class="container">
-  <div class="center">
-
-  <h1>{{ title }}</h1>
-  <h5>{{ author }}</h5>
-  <template v-for="line in lines">
-    <ul>
-      <label>{{ line }}</label>
-    </ul>
-  </template>
-  </div>
+  <div class="container">
+    <div class="center">
+      <h2>{{ title }}</h2>
+      <br>
+      <p><i>{{ author }}</i></p>
+      <br>
+      <template v-for="line in lines">
+        <ul>
+          <label>{{ line }}</label>
+        </ul>
+      </template>
+    </div>
   </div>
 </template>
