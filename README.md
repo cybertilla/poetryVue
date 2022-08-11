@@ -18,6 +18,14 @@ These instructions will get you a copy of the project up and running on your loc
 ### Installing
 
 ## Project Setup
+
+Get the code by cloning this repository using git
+```sh
+git clone https://github.com/cybertilla/poetrysite
+```
+
+and open your terminal in the project directory
+
 # install dependencies
 
 ```sh
