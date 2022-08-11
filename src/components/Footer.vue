@@ -18,6 +18,7 @@
 </script>
 
 <template>
+<br>
   <MDBFooter :text="['center', 'lg-start', 'muted']">
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05)">
       © 2022 Bertilla Fabris, BS in Computer Science, Information Architeture - Malmö University
