@@ -21,7 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Get the code by cloning this repository using git
 ```sh
-git clone https://github.com/cybertilla/poetrysite
+git clone https://github.com/cybertilla/randomPoems
 ```
 
 and open your terminal in the project directory
