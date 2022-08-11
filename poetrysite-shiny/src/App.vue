@@ -1,22 +1,17 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+//This is the main app vue file
+//import components
 import NavBar from './components/NavBar.vue';
+import Display from './components/Display.vue';
+import Footer from './components/Footer.vue';
 </script>
 
 <template>
   <header>
-<NavBar></NavBar>
+    <NavBar></NavBar>
   </header>
-
   <main>
-      <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <Display></Display>
   </main>
+  <Footer></Footer>
 </template>
-
-<style scoped>
-#app {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
-}
-</style>
