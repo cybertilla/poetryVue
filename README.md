@@ -11,6 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
+* node 16.17.0 or newer (https://nodejs.org/en/)
 * vue (version 3 or newer)
 * npm
 
